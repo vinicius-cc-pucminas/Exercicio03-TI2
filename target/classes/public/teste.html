@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ExercÃ­cio 3</title>
+
+    <!-- css bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body onload="onLoad()">
+	<h1 class="text-center">Fazendas</h1>
+	
+	<input type="hidden" id="msg" name="msg" value="">
+	
+	<main class="container">
+		<h2 class="text-center mt-4">Inserir Fazenda</h2><p class="text-center mt-4 text-secondary">Fazendeiro, quantidade de vacas, galinhas e porcos</p><section class="row mt-4 mb-5"><div class="col p-4 bg-light"><form action="/fazenda/insert" method="post" class="form" id="frmFazenda"><div class="row mb-4"><div class="col-6"><label for="codigo" class="form-label">Código:</label><input type="number" class="form-control" value="-1" id="codigo" required></div></div><div class="row mb-4"><div class="col"><label for="fazendeiro" class="form-label">Fazendeiro:</label><input type="text" class="form-control" value="Teste Fazendeiro" id="fazendeiro" required></div></div><div class="row mb-4"><div class="col"><label for="vacas" class="form-label">Quantidade Vacas:</label><input type="number" class="form-control" value="100" id="vacas" required></div><div class="col"><label for="galinhas" class="form-label">Quantidade Galinhas:</label><input type="number" class="form-control" value="100" id="galinhas" required></div><div class="col"><label for="porcos" class="form-label">Quantidade Porcos:</label><input type="number" class="form-control" value="100" id="porcos" required></div></div><div class="row"><div class="col d-flex justify-content-end gap-4"><button type="submit" id="btnSalvar" class="btn btn-outline-primary">Inserir</button><button type="reset" id="btnReset" class="btn btn-outline-danger">Apagar</button></div></div></form></div></section>
+	
+		<br>
+		
+		<section class="row"><div class="col"><table class="table table-hover"><thead><tr><th scope="col"><a href="/fazenda/list/1">Código</a></th><th scope="col"><a href="/fazenda/list/2">Fazendeiro</a></th><th scope="col">Vacas</th><th scope="col">Galinhas</th><th scope="col">Porcos</th><th scope="col">Ações</th></tr></thead><tbody id="tbody"><tr onclick="window.location.href='/fazenda/1'"><td>1</td><td>Alberto Rodrigues</td><td>45</td><td>65</td><td>45</td><td class="d-flex gap-4"><a href="/fazenda/update/1">Atualizar</a><button class="btn btn-outline-danger" onclick="confirmarDeleteFazenda('1');">Deletar</button></td></tr><tr onclick="window.location.href='/fazenda/2'"><td>2</td><td>Valentim de Souza</td><td>54</td><td>76</td><td>54</td><td class="d-flex gap-4"><a href="/fazenda/update/2">Atualizar</a><button class="btn btn-outline-danger" onclick="confirmarDeleteFazenda('2');">Deletar</button></td></tr><tr onclick="window.location.href='/fazenda/6'"><td>6</td><td>vinicius</td><td>65</td><td>43</td><td>65</td><td class="d-flex gap-4"><a href="/fazenda/update/6">Atualizar</a><button class="btn btn-outline-danger" onclick="confirmarDeleteFazenda('6');">Deletar</button></td></tr></tbody></table></div></section>
+	</main>
+
+ 	<!-- css bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	
+	<!-- scripts -->
+	<script>
+		function confirmarDeleteProduto(id, descricao, preco) {  
+		
+	    	if (confirm('Confirmar a exclusÃ£o do produto [' + descricao + '] (ID ' + id + ') com preÃ§o R$ ' + preco)) {  
+	        	location.href = '/produto/delete/' + id;
+	    	}
+		}
+		
+		function onLoad() {
+	    	if(document.getElementById("msg").value != ""){
+	      		alert(document.getElementById("msg").value);
+	    	}
+		}
+	</script>
+</body>
+</html>
